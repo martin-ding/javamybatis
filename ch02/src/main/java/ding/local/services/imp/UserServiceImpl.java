@@ -18,11 +18,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public int addUser(User user) {
         userDao.insertUser(user);
+        int a = 10/0;
         return 1;
     }
 
     @Override
     public List<User> selectUser() {
-        return userDao.selectUser();
+        List<User>  list = userDao.selectUser();
+        int a = 10/0;
+        return list;
     }
 }

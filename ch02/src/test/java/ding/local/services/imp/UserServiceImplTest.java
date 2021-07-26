@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,8 +26,8 @@ class UserServiceImplTest {
     @Test
     void testAddUser() throws IOException {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
-        Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(System.out::println);
-        UserDao userDao = (UserDao) applicationContext.getBean("userDao");
+        UserService service = (UserService) applicationContext.getBean("userService");
+        System.out.println(service.getClass().getName());
 //        List<User> list = userDao.selectUser();
 //        list.stream().forEach(System.out::println);
         User user = new User();
@@ -32,13 +35,21 @@ class UserServiceImplTest {
         user.setAddress("zhangs1an");
         user.setEmail("zhangsa1n");
         user.setId(2);
-        userDao.insertUser(user);
+        service.addUser(user);
     }
 
+
+
     @Test
+    @Transactional(
+            propagation = Propagation.REQUIRED,
+            isolation = Isolation.DEFAULT,
+            rollbackFor = {RuntimeException.class}
+    )
     void testSelect() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
-        UserService userService = (UserService) applicationContext.getBean("userService");
-        userService.selectUser().stream().forEach(System.out::println);
+        UserService service = (UserService) applicationContext.getBean("userService");
+        System.out.println(service.getClass().getName());
+        service.selectUser().stream().forEach(System.out::println);
     }
 }
