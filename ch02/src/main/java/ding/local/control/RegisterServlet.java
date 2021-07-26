@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("dedee");
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String email = request.getParameter("email");
@@ -34,6 +35,7 @@ public class RegisterServlet extends HttpServlet {
 
         //使用框架提供的方法
         ApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+        System.out.println(applicationContext);
 
         // 获取service
         UserService service = (UserService) applicationContext.getBean("userService");

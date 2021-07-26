@@ -2,7 +2,7 @@
 <html>
 <head><title>Title</title></head>
 <body>
-<p>注册学生</p>
+<p>注册学生asda</p>
 <form action="reg" method="post">
     <table>
         <tr>
