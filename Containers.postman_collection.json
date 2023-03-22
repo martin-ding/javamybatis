@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "0d33f46b-2af0-4e8e-9358-55166c3b3b3e",
+		"name": "Containers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all containers",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true,
+					"accept": true,
+					"content-length": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "kieserver1!",
+						"username": "kieserver"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/containers"
+			},
+			"response": []
+		},
+		{
+			"name": "get processes {definition} in a container",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/queries/cases/DEMO_1.0.0-SNAPSHOT/processes"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "kieserver1!",
+			"username": "kieserver"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

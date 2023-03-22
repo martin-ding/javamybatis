@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "805be202-3a10-4e4f-aba2-a1d7b3a90e8c",
+		"name": "tasks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get task by process instance id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/queries/tasks/instances/process/1"
+			},
+			"response": []
+		},
+		{
+			"name": "claim a task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/containers/DEMO_1.0.0-SNAPSHOT/tasks/1/states/claimed"
+			},
+			"response": []
+		},
+		{
+			"name": "start a task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/containers/DEMO_1.0.0-SNAPSHOT/tasks/4/states/started"
+			},
+			"response": []
+		},
+		{
+			"name": "get all input data of a task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/containers/DEMO_1.0.0-SNAPSHOT/tasks/4/contents/input"
+			},
+			"response": []
+		},
+		{
+			"name": "ge all output data of a task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/containers/DEMO_1.0.0-SNAPSHOT/tasks/4/contents/output"
+			},
+			"response": []
+		},
+		{
+			"name": "complete a task with  request body",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"approved\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://10.211.55.12:8888/kie-server/services/rest/server/containers/DEMO_1.0.0-SNAPSHOT/tasks/5/states/completed"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "kieserver1!",
+			"username": "kieserver"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
